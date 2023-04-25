@@ -1,0 +1,226 @@
+:root {
+  --primary-background-color: #491d4a;
+  --drive-color: #ebba9d;
+  --drive-slot-color: #000000;
+  --drive-slot-highlight-color: rgba(255, 255, 255, 0.8);
+  --led-off-color: #5f2300;
+  --eject-accent-color: rgba(139, 58, 10, 0.5);
+  --eject-highlight-color: rgba(255, 255, 255, 0.3);
+  /* --floppy-dark-accent-color: #0b184e; */
+  --floppy-dark-accent-color: #26296d;
+  --floppy-color: #283d8e;
+  --floppy-cover-color: #a19482;
+  --floppy-shadow-accent-color: rgba(0, 0, 0, 0.5);
+  --floppy-label-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+html {
+  font-size: 2rem;
+}
+
+body {
+  background-color: var(--primary-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.drive {
+  position: relative;
+  background-color: var(--drive-color);
+  width: 10em;
+  height: 2.4em;
+}
+.drive::after {
+  content: "";
+  position: absolute;
+  height: 0.6rem;
+  inset: 0.4rem;
+  background-color: var(--drive-slot-color);
+  box-shadow: inset -0.06rem -0.06rem 0.06rem var(--drive-slot-highlight-color);
+}
+
+.drive .eject {
+  position: absolute;
+  height: 0.5rem;
+  bottom: 0.5rem;
+  right: 0.8rem;
+  width: 1.6rem;
+  box-shadow: inset 0.06rem 0.06rem 0.09rem var(--eject-accent-color),
+    inset -0.06rem 0.12rem 0.12rem var(--eject-highlight-color);
+}
+
+.drive .led {
+  position: absolute;
+  height: 0.2rem;
+  bottom: 0.5rem;
+  left: 1.6rem;
+  width: 0.6rem;
+  background-color: var(--led-off-color);
+}
+
+.floppy {
+  position: absolute;
+  width: 8.8rem;
+  height: 8rem;
+  top: 3.2rem;
+
+  transform-origin: bottom right;
+  transform-style: preserve-3d;
+
+  animation: insert-floppy 5s linear infinite;
+  /* animation: rotation-test 4s linear infinite; */
+  /* transform: rotateX(20deg); */
+}
+
+@keyframes rotation-test {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes insert-floppy {
+  0% {
+    transform: translateY(0) rotateX(0);
+  }
+
+  50% {
+    transform: translateY(0) rotateX(0);
+  }
+
+  62.5% {
+    transform: translateY(-5.3rem) rotateX(50deg);
+  }
+
+  75% {
+    transform: translateY(-10.65rem) rotateX(90deg);
+  }
+
+  100% {
+    transform: translateY(-10.65rem) rotateX(90deg);
+  }
+}
+
+.floppy::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--floppy-dark-accent-color);
+  clip-path: polygon(7% 0, 89% 0, 100% 11%, 100% 100%, 0 100%, 0 7%);
+}
+
+.floppy .coating {
+  position: absolute;
+  inset: 0.06rem 0.06rem 0 0.06rem;
+  background-color: var(--floppy-color);
+  clip-path: polygon(7% 0, 89% 0, 100% 11%, 100% 100%, 0 100%, 0 7%);
+}
+
+.floppy::after {
+  content: "";
+  position: absolute;
+  height: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 0;
+  transform: translateZ(-8.25rem) rotateX(-90deg) translateY(-8.12rem)
+    translateZ(0.3rem);
+  background-color: var(--floppy-color);
+  border-left: 0.06rem solid var(--floppy-dark-accent-color);
+  border-right: 0.06rem solid var(--floppy-dark-accent-color);
+  z-index: 90;
+}
+
+.floppy .cover {
+  position: absolute;
+  width: 5.7rem;
+  height: 2.6rem;
+  top: 0;
+  left: 1.1rem;
+  background-color: var(--floppy-dark-accent-color);
+  border-radius: 0 0 0.18rem 0.18rem;
+}
+
+.floppy .cover::before {
+  content: "";
+  position: absolute;
+  width: calc(100% - 1.3rem);
+  height: 100%;
+  background-color: var(--floppy-cover-color);
+  border-radius: 0 0 0.18rem 0.18rem;
+  right: 0;
+  box-shadow: -0.12rem 0 0.12rem var(--floppy-shadow-accent-color);
+}
+
+.floppy .cover::after {
+  content: "";
+  position: absolute;
+  width: 1.1rem;
+  height: calc(100% - 0.6rem);
+  background-color: var(--floppy-dark-accent-color);
+  border-radius: 0.12rem;
+  right: 0.8rem;
+  bottom: 0.24rem;
+  box-shadow: inset -0.12rem -0.06rem 0.12rem var(--floppy-shadow-accent-color);
+}
+
+.floppy .writeprotect {
+  position: absolute;
+  width: 0.36rem;
+  height: 0.36rem;
+  background-color: var(--floppy-dark-accent-color);
+  border-radius: 0.06rem;
+  bottom: 0.36rem;
+  left: 0.36rem;
+  box-shadow: inset -0.12rem -0.06rem 0.12rem var(--floppy-shadow-accent-color);
+}
+
+.floppy .label {
+  position: absolute;
+  height: 4.6rem;
+  bottom: 0;
+  left: 1.1rem;
+  right: 1.1rem;
+  background-color: var(--floppy-label-color);
+  border-radius: 0.18rem 0.18rem 0 0;
+  box-shadow: 0.06rem -0.06rem 0.18rem var(--floppy-shadow-accent-color);
+  transform-style: preserve-3d;
+}
+
+.floppy .label::after {
+  content: "";
+  position: absolute;
+  height: 0.5rem;
+  width: calc(
+    100% + 0.01rem
+  ); /* No idea, why it is short by a tiny fraction of a pixel otherwise */
+  box-sizing: border-box;
+  bottom: 0;
+  transform: translateZ(-8.25rem) rotateX(-90deg) translateY(-8.12rem)
+    /* no idea, why the extra -0.12rem are needed here */
+    translateZ(calc(0.3rem + 0.001rem));
+  background-color: var(--floppy-label-color);
+}
