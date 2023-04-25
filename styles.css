@@ -12,7 +12,7 @@
   --floppy-cover-color: #a19482;
   --floppy-shadow-accent-color: rgba(0, 0, 0, 0.5);
   --floppy-label-color: #ffffff;
-  --primary-text-color: #E1C2A8;
+  --primary-text-color: #e1c2a8;
 }
 
 * {
@@ -21,7 +21,7 @@
   margin: 0;
 }
 
-html,
+html
 body {
   min-height: 100vh;
 }
@@ -232,7 +232,74 @@ p {
   font-family: "TopazPlus";
   color: var(--primary-text-color);
   font-size: 1.2rem;
-  letter-spacing: .06rem;
-  line-height: 1.8rem;;
+  letter-spacing: 0.06rem;
+  line-height: 1.8rem;
   white-space: pre-line;
+}
+
+.amigalogo {
+  position: relative;
+  /* background: goldenrod; */
+  width: 11rem;
+  height: 10rem;
+  transform: translateX(4.5rem);
+}
+
+.amigalogo .upper {
+  position: absolute;
+  width: 1.2rem;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    hsl(0, 100%, 50%) 0%,
+    hsl(50, 100%, 50%) 60%,
+    hsl(100, 100%, 50%) 95%,
+    hsl(160, 100%, 50%) 100%
+  );
+  transform: skewX(-30deg);
+  box-shadow: 0.12rem 0.12rem 0.18rem rgba(255, 255, 255, 0.7);
+}
+
+.amigalogo .upper::before {
+  content: "";
+  position: absolute;
+  width: 1.2rem;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    hsl(0, 100%, 50%) 0%,
+    hsl(50, 100%, 50%) 60%,
+    hsl(100, 100%, 50%) 95%,
+    hsl(160, 100%, 50%) 100%
+  );
+  transform: translateX(1.6rem);
+  box-shadow: 0.12rem 0.12rem 0.18rem rgba(255, 255, 255, 0.7);
+}
+
+.amigalogo .lower {
+  position: absolute;
+  width: 1.2rem;
+  height: 35%;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    hsl(160, 100%, 50%) 0%,
+    hsl(220, 100%, 50%) 100%
+  );
+  transform: translateX(-3.88rem) skewX(30deg);
+  box-shadow: 0.12rem 0 0.18rem rgba(255, 255, 255, 0.7);
+}
+
+.amigalogo .lower::before {
+  content: "";
+  position: absolute;
+  width: 1.2rem;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    hsl(160, 100%, 50%) 0%,
+    hsl(220, 100%, 50%) 100%
+  );
+  transform: translateX(1.6rem);
+  box-shadow: 0.12rem 0 0.18rem rgba(255, 255, 255, 0.7);
 }
