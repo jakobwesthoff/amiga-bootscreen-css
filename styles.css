@@ -12,6 +12,7 @@
   --floppy-cover-color: #a19482;
   --floppy-shadow-accent-color: rgba(0, 0, 0, 0.5);
   --floppy-label-color: #ffffff;
+  --primary-text-color: #E1C2A8;
 }
 
 * {
@@ -26,13 +27,13 @@ body {
 }
 
 html {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 body {
   background-color: var(--primary-background-color);
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -221,6 +222,17 @@ section {
   bottom: 0;
   transform: translateZ(-8.25rem) rotateX(-90deg) translateY(-8.12rem)
     /* no idea, why the extra -0.12rem are needed here */
-    translateZ(calc(0.3rem + 0.001rem));
+    translateZ(calc(0.3rem + 0.1px));
   background-color: var(--floppy-label-color);
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-family: "TopazPlus";
+  color: var(--primary-text-color);
+  font-size: 1.2rem;
+  letter-spacing: .06rem;
+  line-height: 1.8rem;;
+  white-space: pre-line;
 }
