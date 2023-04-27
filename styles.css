@@ -1,3 +1,9 @@
+/**
+ * Amiga Kickstart Bootscreen remake in pure CSS
+ * Copyright (c) 2023 Jakob Westhoff <jakob@westhoffswelt.de>
+ * Licensed under MIT license
+ */
+
 :root {
   --primary-background-color: #491d4a;
   --drive-color: #ebba9d;
